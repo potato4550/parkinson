@@ -1,0 +1,283 @@
+{
+  "schema_version": "1.0.0",
+  "project": "GENE2BRAIN",
+  "title": "From Genetic Risk to Spatial Brain Vulnerability",
+  "generated_on": "2026-09-15",
+  "available_diseases": [
+    {
+      "id": "parkinson",
+      "name": "Parkinson disease",
+      "status": "available"
+    },
+    {
+      "id": "alzheimer",
+      "name": "Alzheimer disease",
+      "status": "available"
+    },
+    {
+      "id": "als",
+      "name": "Amyotrophic lateral sclerosis",
+      "status": "available"
+    },
+    {
+      "id": "schizophrenia",
+      "name": "Schizophrenia",
+      "status": "available"
+    },
+    {
+      "id": "bipolar",
+      "name": "Bipolar disorder",
+      "status": "available"
+    },
+    {
+      "id": "major_depression",
+      "name": "Major depressive disorder",
+      "status": "available"
+    },
+    {
+      "id": "adhd",
+      "name": "Attention deficit-hyperactivity disorder",
+      "status": "available"
+    },
+    {
+      "id": "epilepsy",
+      "name": "Epilepsy",
+      "status": "available"
+    },
+    {
+      "id": "migraine",
+      "name": "Migraine",
+      "status": "available"
+    },
+    {
+      "id": "multiple_sclerosis",
+      "name": "Multiple sclerosis",
+      "status": "available"
+    }
+  ],
+  "excluded_or_needs_review": [
+    {
+      "disease_id": "huntington",
+      "disease_name": "Huntington disease",
+      "status": "excluded",
+      "reason": "Catalog ontology has only GCST004691 for Huntington progression, not common-variant disease risk."
+    },
+    {
+      "disease_id": "multiple_system_atrophy",
+      "disease_name": "Multiple system atrophy",
+      "status": "excluded",
+      "reason": "Eligible risk GWAS exists, but current Open Targets has zero credible sets; older eligible studies also have zero."
+    },
+    {
+      "disease_id": "progressive_supranuclear_palsy",
+      "disease_name": "Progressive supranuclear palsy",
+      "status": "needs_review",
+      "reason": "Largest disease-specific genome-wide array study with Open Targets credible sets, but only four prioritized genes were returned; it fails the frozen minimum-five-gene AHBA analysis gate."
+    },
+    {
+      "disease_id": "autism",
+      "disease_name": "Autism spectrum disorder",
+      "status": "needs_review",
+      "reason": "The larger SPARK record has zero Open Targets credible sets; this disease-specific alternative returns only one prioritized gene and fails the frozen minimum-five-gene AHBA analysis gate."
+    },
+    {
+      "disease_id": "tourette",
+      "disease_name": "Tourette syndrome",
+      "status": "excluded",
+      "reason": "Eligible risk GWAS exists, but current Open Targets has zero credible sets; older eligible studies also have zero."
+    }
+  ],
+  "researcher": {
+    "name": "Shibaditya Deb",
+    "affiliation": "Student, Independent Research",
+    "contact": "debshibaditya144@gmail.com",
+    "publication_status": "not confirmed"
+  },
+  "counts": {
+    "ahba_donors": 6,
+    "ahba_samples": 3702,
+    "atlas_parcels": 166,
+    "regions_analyzed": 138,
+    "genes_analyzed": 15632,
+    "parkinson_genes_represented": 123,
+    "random_gene_sets": 10000,
+    "credible_sets": 67,
+    "gwas_sample_size": 2525730
+  },
+  "analysis": {
+    "primary_gene_set": "weighted",
+    "gwas_accession": "GCST90308590",
+    "gwas_title": "Multi-ancestry genome-wide association meta-analysis of Parkinson's disease",
+    "gene_prioritization": "Open Targets Platform Locus-to-Gene (L2G)",
+    "null_model": "Euclidean nearest neighbors after unit-variance standardization",
+    "matching_variables": [
+      "mean_expression",
+      "log10_expression_variance",
+      "log1p_probe_count"
+    ],
+    "multiple_testing": "Benjamini-Hochberg across 138 regions separately for each gene-set version",
+    "fdr_threshold": 0.05,
+    "significant_regions": 0,
+    "null_draws_available": false,
+    "null_summary_available": true,
+    "null_summary_note": "Per-region random mean and standard deviation are retained; individual permutation draws were not exported by Stage 6.",
+    "spatial_sensitivity": {
+      "method": "Moran spectral randomization, singleton procedure",
+      "neighbor_definition": "26-connectivity: voxel face, edge, or corner contact",
+      "permutations": 10000,
+      "global_statistic": "maximum standardized positive regional Stage 6 Z-score",
+      "global_p": 0.5301469853014699,
+      "robust_rule": "positive Stage 6 Z AND Stage 6 FDR < 0.05 AND Stage 7 spatial-null FDR < 0.05",
+      "robust_regions": 0,
+      "isolated_regions": 4
+    },
+    "independent_validation": {
+      "dataset": "ENIGMA-Parkinson's 2021 PD-versus-control MRI summary statistics",
+      "phenotype": "Sign-reversed Cohen's d for cortical thickness or subcortical volume; higher means thinner/smaller in PD",
+      "matched_validation_units": 70,
+      "mapped_aal3_regions": 100,
+      "pearson_r": -0.02790831760440003,
+      "pearson_p": 0.8186061484629997,
+      "pearson_ci": [
+        -0.2170365844738854,
+        0.17641088143236852
+      ],
+      "spearman_rho": -0.014839703480876765,
+      "spearman_p": 0.9029552492557126,
+      "spatial_null_p": 0.8313168683131686,
+      "interpretation": "NOT SUPPORTED",
+      "independence_note": "Independent measurement and analysis; exact participant-disjointness from the upstream GWAS cannot be guaranteed",
+      "substantia_nigra": "Not measured in the public ENIGMA-PD FreeSurfer tables"
+    },
+    "biological_interpretation": {
+      "status": "post-hoc interpretation of frozen discovery outputs",
+      "primary_gene_set": "Stage 4 L2G-weighted",
+      "genes_analyzed": 149,
+      "genes_represented_in_ahba": 123,
+      "background": "15,632 genes retained in the Stage 2 AHBA matrix",
+      "go_significant_terms": 6,
+      "reactome_significant_pathways": 0,
+      "ranked_significant_pathways": 0,
+      "cell_types_significant": 0,
+      "supported_region_pathway_rows": 3,
+      "region_rule": "top 10 by frozen Stage 7 robustness rank",
+      "interpretation_note": "Enrichment and cell-type associations do not establish causality, pathology, pathway activation, or clinical utility"
+    }
+  },
+  "metrics": {
+    "z_score": {
+      "label": "Z-score",
+      "domain": [
+        -3.740427986118954,
+        3.740427986118954
+      ],
+      "scale": "diverging, symmetric about zero"
+    },
+    "observed_score": {
+      "label": "Observed expression",
+      "domain": [
+        0.4392928393734095,
+        0.5671194217937651
+      ],
+      "scale": "sequential"
+    },
+    "fdr_p": {
+      "label": "FDR significance",
+      "threshold": 0.05,
+      "scale": "binary significance status"
+    },
+    "spatial_robustness": {
+      "label": "Spatial robustness",
+      "domain": [
+        0,
+        1
+      ],
+      "scale": "sequential spatial-null percentile"
+    },
+    "validation_score": {
+      "label": "Independent validation",
+      "domain": [
+        -0.198,
+        0.198
+      ],
+      "scale": "diverging, symmetric about zero; gray is not measured"
+    },
+    "agreement": {
+      "label": "Agreement",
+      "scale": "four pre-specified median-split categories; gray is not measured"
+    }
+  },
+  "atlas": {
+    "name": "Automated Anatomical Labeling atlas 3 (AAL3v1)",
+    "distribution": "AAL3v2 for SPM12, April 2024",
+    "space": "MNI",
+    "resolution_mm": [
+      2,
+      2,
+      2
+    ],
+    "dimensions": [
+      91,
+      109,
+      91
+    ],
+    "source_image": "data/atlases/aal_3v2/AAL3/AAL3v1.nii.gz",
+    "mapping": "region_id equals the nonzero integer voxel label in AAL3v1.nii.gz",
+    "geometry_method": "Folded Nilearn fsaverage6 pial surface with neuromaps 41k registration-fusion projection of exact AAL3v1 integer labels; smooth AAL3 isosurfaces for noncortical parcels",
+    "render_coordinate_mapping": "RAS (x, y, z) is rendered as WebGL (x, z, y) so superior is up; fsaverage cortex and MNI subcortical coordinates are not assumed to be perfectly co-registered"
+  },
+  "sources": [
+    {
+      "name": "Allen Human Brain Atlas",
+      "url": "https://human.brain-map.org/"
+    },
+    {
+      "name": "abagen",
+      "url": "https://abagen.readthedocs.io/"
+    },
+    {
+      "name": "NHGRI-EBI GWAS Catalog",
+      "url": "https://www.ebi.ac.uk/gwas/"
+    },
+    {
+      "name": "Selected Parkinson GWAS GCST90308590",
+      "url": "https://www.ebi.ac.uk/gwas/studies/GCST90308590"
+    },
+    {
+      "name": "Open Targets Platform",
+      "url": "https://platform.opentargets.org/"
+    },
+    {
+      "name": "AAL3 atlas publication",
+      "url": "https://doi.org/10.1016/j.neuroimage.2019.116189"
+    },
+    {
+      "name": "ENIGMA-Parkinson's structural MRI validation",
+      "url": "https://doi.org/10.1002/mds.28706"
+    },
+    {
+      "name": "ENIGMA Toolbox summary statistics",
+      "url": "https://enigma-toolbox.readthedocs.io/en/latest/pages/04.loadsumstats/"
+    },
+    {
+      "name": "g:Profiler functional enrichment",
+      "url": "https://biit.cs.ut.ee/gprofiler/"
+    },
+    {
+      "name": "Gene Ontology",
+      "url": "https://geneontology.org/"
+    },
+    {
+      "name": "Reactome release 97",
+      "url": "https://reactome.org/"
+    },
+    {
+      "name": "WikiPathways September 2026",
+      "url": "https://data.wikipathways.org/current/gmt/"
+    },
+    {
+      "name": "Human Protein Atlas v25.1 single-nucleus brain",
+      "url": "https://www.proteinatlas.org/humanproteome/single+cell/single+nuclei+brain/data"
+    }
+  ]
+}
